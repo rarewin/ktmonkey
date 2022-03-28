@@ -8,8 +8,6 @@ public class Lexer(input: String) {
 
     fun next(): Token {
 
-        println("FUGAAA: " + input)
-
         val s = input.take(1)
 
         input = input.drop(1)
@@ -22,7 +20,12 @@ public class Lexer(input: String) {
 
         return when (ch) {
             '=' -> Token(Token.Type.Assign)
-            else -> TODO()
+            '+' -> Token(Token.Type.Plus)
+            '(' -> Token(Token.Type.LParen)
+            ')' -> Token(Token.Type.RParen)
+            '{' -> Token(Token.Type.LBrace)
+            '}' -> Token(Token.Type.RBrace)
+            else -> TODO("unimplemented for `$ch'")
         }
     }
 }

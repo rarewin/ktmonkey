@@ -7,11 +7,15 @@ public class Token(type: Type) {
         Illegal,
         EoF,
 
-        Ident,
-        Int,
-
         Assign,
         Plus,
+        LParen,
+        RParen,
+        LBrace,
+        RBrace,
+
+        Ident,
+        Int,
     }
 
     override fun equals(other: Any?): Boolean {

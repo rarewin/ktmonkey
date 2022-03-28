@@ -6,6 +6,9 @@
  * User Manual available at https://docs.gradle.org/7.4.1/userguide/building_java_projects.html
  */
 
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
+
 plugins {
     // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
     id 'org.jetbrains.kotlin.jvm' version '1.5.31'
@@ -45,7 +48,11 @@ application {
 
 test {
     testLogging {
-        outputs.upToDateWhen {false}
+        events(TestLogEvent.FAILED, TestLogEvent.SKIPPED)
+        exceptionFormat = TestExceptionFormat.FULL
+        showCauses = true
+        showExceptions = true
+        showStackTraces = true
         showStandardStreams = true
     }
 }
