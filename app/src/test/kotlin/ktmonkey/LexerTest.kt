@@ -35,16 +35,22 @@ import ktmonkey.*
             {"foo": "bar"}""")
 
             val expects = listOf(
-                Token.Type.Assign,
-                Token.Type.Plus,
-                Token.Type.LParen,
-                Token.Type.RParen,
-                Token.Type.LBrace,
-                Token.Type.RBrace,
+                Token(Token.Type.Assign, "="),
+                Token(Token.Type.Plus, "+"),
+                Token(Token.Type.LParen, "("),
+                Token(Token.Type.RParen, ")"),
+                Token(Token.Type.LBrace, "{"),
+                Token(Token.Type.RBrace, "}"),
+                Token(Token.Type.Comma, ","),
+                Token(Token.Type.Semicolon, ";"),
+                Token(Token.Type.Let, "let"),
+                Token(Token.Type.Ident, "five"),
+                Token(Token.Type.Assign, "="),
+                Token(Token.Type.Int, "5"),
             )
 
             for (token in expects) {
-                assertEquals(lexer.next(), Token(token))
+                assertEquals(lexer.next(), token)
             }
         }
     }
